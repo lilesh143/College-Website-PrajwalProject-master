@@ -1,9 +1,5 @@
 # College-Website
 
-## Screenshot
-
-![App Screenshot](https://i.ibb.co/ngzvB02/Screenshot-121.png)
-
 
 ## Features
 
@@ -22,15 +18,14 @@ https://jaydipsinh-collegewebsite.netlify.app
 
 ## Feedback
 
-If you have any feedback, please reach out to us at jaydipsinhsolanki9297@gmail.com
+If you have any feedback, please reach out to us at lileshrocking@gmail.com
 
 
 ## Authors
 
-- [@jaydipsinh13](https://www.github.com/jaydipsinh13)
+- [@lilesh143](https://www.github.com/lilesh143)
 
 
-## 🔗 Links
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jaydipsinhsolanki/)
+  Note - At initial commit, it is purely non optimize code. Feel free to optimize and contribute.
 
 

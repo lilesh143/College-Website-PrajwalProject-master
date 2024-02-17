@@ -1,0 +1,28 @@
+{
+    "name": "ums",
+    "version": "1.0.0",
+    "description": "user management system using REST APIs",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "lilesh",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.20.2",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "express-flash": "^0.0.2",
+        "express-session": "^1.18.0",
+        "express-validator": "^7.0.1",
+        "jsonwebtoken": "^9.0.2",
+        "multer": "^1.4.5-lts.1",
+        "nodemailer": "^6.9.7",
+        "nodemon": "^3.0.3",
+        "pg": "^8.11.3",
+        "randomstring": "^1.3.0"
+    }
+}
