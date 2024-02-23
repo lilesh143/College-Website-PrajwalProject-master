@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - RCERT</title>
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="../css/contact_style.css">
+    <!-- <link rel="stylesheet" href="../css/login.css"> -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <a href="/"><img src="../image/logo.png" id="logo-img"></a>
+
+            <div class="nav-links" id="navLinks">
+
+                <span class="icon" onclick="hidemenu()">&#10005;</span>
+                <ul>
+                    <li><a href="/ ">Home</a></li>
+
+                    <% if(isAdmin) {%>
+                        <li><a href="/admin ">Admin Panel</a></li>
+                        <% } %>
+
+
+                            <li><a href="/api/admission ">Admission</a></li>
+                            <li><a href="/course ">Course</a></li>
+                            <li><a href="/fees ">Fees</a></li>
+                            <li><a href="/contact ">Contact</a></li>
+                            <li><a href="/api/sign_up ">Sign Up</a></li>
+                            <% if(isLogged) {%>
+                                <li><a href="/api/logout ">Logout</a></li>
+                                <% }else {%>
+                                    <li><a href="/api/login ">Login</a></li>
+                                    <% }%>
+
+
+
+                </ul>
+            </div>
+            <span class="icon" onclick="showmenu()">&#9776;</span>
+        </nav>
+        <div class="wrapper formContainer">
+            <div class="r_form_wrap">
+
+                <div class="impMsg">
+                    <% if(typeof msg !=='undefined' ){ %>
+                        <p style="color: red;">
+                            <%= msg %>
+                        </p>
+                        <% } %>
+                </div>
+                <div class="title">
+                    <p>Student Data</p>
+                </div>
+            </div>
+
+            <div class="table-white-background">
+
+                <h3>Admission Enquires</h3>
+
+                <table class="table-white-background" e>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Your Name</th>
+                            <th>Email Address</th>
+                            <th>Phone</th>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
+                            <th>Course</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% admissionData.forEach(entry=> { %>
+                            <tr>
+                                <td>
+                                    <%= entry.id %>
+                                </td>
+                                <td>
+                                    <%= entry.username %>
+                                </td>
+                                <td>
+                                    <%= entry.email %>
+                                </td>
+                                <td>
+                                    <%= entry.phone %>
+                                </td>
+                                <td>
+                                    <%= entry.gender %>
+                                </td>
+                                <td>
+                                    <%= new Date(entry.dob).toLocaleDateString() %>
+                                </td>
+                                <td>
+                                    <%= entry.course %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-white-background">
+
+                <table class="table-white-background">
+                    <h3>Signup Users</h3>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Is Admin</th>
+                            <th>Is Verified</th>
+                            <th>Created At</th>
+                            <th>Updated At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% signUpUsers.forEach(user => { %>
+                            <tr>
+                                <td>
+                                    <%= user.id %>
+                                </td>
+                                <td>
+                                    <%= user.name %>
+                                </td>
+                                <td>
+                                    <%= user.email %>
+                                </td>
+                                <td>
+                                    <%= user.is_admin %>
+                                </td>
+                                <td>
+                                    <%= user.is_verified %>
+                                </td>
+                                <td>
+                                    <%= new Date(user.created_at).toLocaleDateString() %>
+                                </td>
+                                <td>
+                                    <%= new Date(user.updated_at).toLocaleDateString() %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <div class="none_div"></div>
+
+
+
+
+</body>
+<script src="../javascript/login.js"></script>
+<!-- <script src=" https://smtpjs.com/v3/smtp.js"></script> -->
+<!-- <script>
+    function sendmail() {
+        Email.send({}).then(
+            message => alert("Your Message Is Successful - Team GGU")
+        );
+    }
+</script> -->
+<script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showmenu() {
+        navLinks.style.right = "0";
+    }
+
+    function hidemenu() {
+        navLinks.style.right = "-200px";
+    }
+</script>
+
+</html>

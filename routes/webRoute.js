@@ -10,7 +10,9 @@ const userController = require('../controllers/userController')
     // const auth = require('../middleware/auth')
 
 user_route.get('/', userController.home);
-user_route.get('/admission', userController.admission);
+// user_route.get('/admission', userController.admission);
+user_route.get('/admin', userController.admin)
+user_route.get('/course', userController.course)
 user_route.get('/fees', userController.fees);
 // user_route.get('/api/login', userController.login2);
 user_route.get('/contact', userController.contact);

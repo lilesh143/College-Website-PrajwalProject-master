@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RCERT College</title>
+    <link rel=" stylesheet " href="../../css/course.css " type="text/css ">
+    <link rel="shortcut icon " href="../../image/favicon.ico " type="image/svg+xml ">
+    <!-- <link rel="stylesheet" href="../public/css/contact_style.css" type="text/css">  -->
+
+</head>
+
+<nav>
+    <a href="/ "><img src="../../image/logo.png " id="logo-img "></a>
+
+    <div class="nav-links " id="navLinks ">
+
+        <span class="icon " onclick="hidemenu() ">&#10005;</span>
+        <ul>
+            <li><a href="/ ">Home</a></li>
+
+            <% if(isAdmin) {%>
+                <li><a href="/admin ">Admin Panel</a></li>
+                <% } %>
+
+                    <li><a href="/api/admission ">Admission</a></li>
+                    <li><a href="/course ">Course</a></li>
+                    <li><a href="/fees ">Fees</a></li>
+                    <li><a href="/contact ">Contact</a></li>
+                    <li><a href="/api/sign_up ">Sign Up</a></li>
+                    <% if(isLogged) {%>
+                        <li><a href="/api/logout ">Logout</a></li>
+                        <% }else {%>
+                            <li><a href="/api/login ">Login</a></li>
+                            <% }%>
+
+        </ul>
+    </div>
+    <span class="icon " onclick="showmenu() ">&#9776;</span>
+</nav>
+
+<body>
+    <div class="container ">
+        <h1>Welcome to RCERT College</h1>
+        <h2>About Our Programs</h2>
+        <div class="program ">
+            <h3>BTech Program</h3>
+            <p>
+                The Bachelor of Technology (BTech) program at RCERT College provides students with a comprehensive education in various engineering disciplines. With state-of-the-art facilities and experienced faculty, we strive to nurture the next generation of engineering
+                professionals who are equipped with both theoretical knowledge and practical skills.
+            </p>
+        </div>
+        <div class="program ">
+            <h3>MTech Program</h3>
+            <p>
+                The Master of Technology (MTech) program at RCERT College offers advanced education and research opportunities for engineering graduates. Our MTech program emphasizes specialization in diverse fields, empowering students to delve deeper into their areas
+                of interest and contribute to cutting-edge research and innovation.
+            </p>
+        </div>
+        <div class="program ">
+            <h3>PhD Program</h3>
+            <p>
+                The Doctor of Philosophy (PhD) program at RCERT College is designed for aspiring scholars and researchers who aim to make significant contributions to the field of engineering through original research. Under the guidance of our esteemed faculty members,
+                PhD students engage in rigorous research endeavors, pushing the boundaries of knowledge and addressing complex engineering challenges.
+            </p>
+        </div>
+        <div class="section ">
+            <h2>Facilities</h2>
+            <img src="../../image/facility_image.jpg " alt="Facilities Image ">
+            <p>Our college provides state-of-the-art facilities including well-equipped laboratories, libraries, sports complex, and comfortable accommodation for students.</p>
+        </div>
+        <div class="section ">
+            <h2>Career Opportunities</h2>
+            <img src="../../image/career_image.jpg " alt="Career Opportunities Image ">
+            <p>RCERT College has strong ties with industry partners, providing ample internship and placement opportunities for students. Our alumni are well-placed in leading companies worldwide.</p>
+        </div>
+        <div class="section ">
+            <h2>Student Life</h2>
+            <img src="../../image/student_life_image.jpg " alt="Student Life Image ">
+            <p>At RCERT College, we believe in holistic development. Apart from academics, students engage in various extracurricular activities, clubs, and cultural events, fostering a vibrant campus life.</p>
+        </div>
+    </div>
+</body>
+
+<script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showmenu() {
+        navLinks.style.right = "0";
+    }
+
+    function hidemenu() {
+        navLinks.style.right = "-200px";
+    }
+</script>
+
+</html>

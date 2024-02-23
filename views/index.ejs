@@ -24,8 +24,13 @@
                 <span class="icon " onclick="hidemenu() ">&#10005;</span>
                 <ul>
                     <li><a href="/ ">Home</a></li>
-                    <li><a href="/admission ">Admission</a></li>
-                    <li><a href="#course_call ">Course</a></li>
+
+                    <% if(isAdmin) {%>
+                        <li><a href="/admin ">Admin Panel</a></li>
+                        <% } %> 
+
+                    <li><a href="/api/admission ">Admission</a></li>
+                    <li><a href="/course ">Course</a></li>
                     <li><a href="/fees ">Fees</a></li>
                     <li><a href="/contact ">Contact</a></li>
                     <li><a href="/api/sign_up ">Sign Up</a></li>
@@ -34,8 +39,7 @@
                         <% }else {%> 
                             <li><a href="/api/login ">Login</a></li>
                             <% }%>
-                            
-                        
+  
                 </ul>
             </div>
             <span class="icon " onclick="showmenu() ">&#9776;</span>

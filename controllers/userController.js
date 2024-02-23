@@ -173,14 +173,17 @@ const login = (req, res) => {
 
                                 console.log(result.rows[0]['id']);
 
+                                var is_admin = result.rows[0]['is_admin']
                                 req.session.user_id = result.rows[0]['id'];
                                 req.session.userName = result.rows[0]['name'];
                                 req.session.isLogged = true;
+                                req.session.isAdmin = is_admin;
                                 console.log(req.session.user_id);
                                 console.log(req.session.isLogged);
+                                console.log(req.session.isAdmin);
 
 
-                                res.render('index', { isLogged: req.session.isLogged, userName: req.session.userName })
+                                res.render('index', { isLogged: req.session.isLogged, userName: req.session.userName, isAdmin: req.session.isAdmin })
 
 
                             }
@@ -363,12 +366,53 @@ const updateProfile = (req, res) => {
 
 const home = (req, res) => {
 
-    res.render('index', { isLogged: req.session.isLogged, userName: req.session.userName });
+    res.render('index', { isLogged: req.session.isLogged, userName: req.session.userName, isAdmin: req.session.isAdmin });
 }
 
 const admission = (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/Admission_page.html'))
+    // res.sendFile(path.join(__dirname, '../views/Admission_page.html'))
+    res.render('Admission_page', {
+        msg: req.flash('msg'),
+        isLogged: req.session.isLogged,
+        userName: req.session.userName,
+        isAdmin: req.session.isAdmin
+    });
+
 }
+
+const admissionData = async(req, res) => {
+
+    try {
+        const checkResult = await db.query(
+            `SELECT * FROM admission WHERE LOWER(email) = LOWER($1);`, [req.body.email]
+        );
+
+        console.log(checkResult.rows.length);
+
+        if (checkResult.rows.length && checkResult != undefined) {
+            req.flash('msg', 'You have already filled the admission form we will contect you shortly');
+            res.redirect('/api/admission');
+        } else {
+            const insertResult = await db.query(
+                `INSERT INTO admission (username, email, phone, gender, dob, course) VALUES ($1, $2, $3, $4, $5, $6);`, [req.body.username, req.body.email, req.body.phone, req.body.gender, req.body.dob, req.body.course]
+            );
+
+            // const randomToken = generateRandomToken(); // You need to define generateRandomToken function
+
+            // await db.query(
+            //     'UPDATE users2 SET token=$1 WHERE email=$2', [randomToken, req.body.email]
+            // );
+
+            req.flash('msg', 'Thank you for filling admission form, we will contact you shortly');
+            res.redirect('/api/admission');
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(400).send({
+            msg: error.message,
+        });
+    }
+};
 
 const fees = (req, res) => {
     res.sendFile(path.join(__dirname, '../views/fees_page.html'))
@@ -387,7 +431,11 @@ const loginPage = (req, res) => {
 }
 
 const contact = (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/Contact_page.html'))
+    res.render('Contact_page', {
+        isLogged: req.session.isLogged,
+        userName: req.session.userName,
+        isAdmin: req.session.isAdmin
+    });
 }
 
 const loadDashboard = async(req, res) => {
@@ -422,6 +470,51 @@ const logout = async(req, res) => {
     }
 }
 
+const course = (req, res) => {
+    try {
+        res.render('course', {
+            isLogged: req.session.isLogged,
+            userName: req.session.userName,
+            isAdmin: req.session.isAdmin
+        });
+
+    } catch (error) {
+        console.log(error.message);
+
+    }
+}
+
+const admin = async(req, res) => {
+    try {
+
+        // Query the PostgreSQL database to fetch all admission form data
+        const { rows: admissionData } = await db.query('SELECT * FROM admission');
+
+        // Query the PostgreSQL database to fetch all sign up users data
+        const { rows: signUpUsers } = await db.query('SELECT * FROM users2');
+
+        // Render the EJS template and pass the data as variables
+        res.render('admin', {
+            admissionData: admissionData,
+            signUpUsers: signUpUsers,
+            isLogged: req.session.isLogged,
+            userName: req.session.userName,
+            isAdmin: req.session.isAdmin
+        });
+
+        // // Query the PostgreSQL database to fetch all admission form data
+        // const { rows } = await db.query('SELECT * FROM admission');
+
+        // // Render the EJS template and pass the admission form data as a variable
+        // res.render('admin', { admissionData: rows });
+        // console.log({ admissionData: rows });
+
+    } catch (error) {
+        console.error('Error fetching admission form data:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
 
 module.exports = {
     register,
@@ -434,10 +527,13 @@ module.exports = {
     updateProfile,
     home,
     admission,
+    admissionData,
     fees,
     signUp,
     loginPage,
     contact,
     loadDashboard,
-    logout
+    logout,
+    course,
+    admin
 };
