@@ -159,7 +159,7 @@ body {
 }
 
 .r_form_wrap {
-    width: 500px;
+    min-width: 32vw;
     max-width: 100%;
 }
 
@@ -303,6 +303,98 @@ body {
 .none_div {
     height: 100px;
     width: 100px;
+}
+
+
+/* .................... */
+
+.bigContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 80vw;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact-info {
+    height: 70vh;
+    width: 40vw;
+}
+
+.contact-form {
+    width: 50vw;
+    /* height: 80vh; */
+}
+
+
+/* ............... */
+
+
+/* Base styling for the contact information */
+
+.contact-info {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+    /* Additional CSS */
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Animation keyframes */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* Additional styling for the h2 and p elements */
+
+.contact-info h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+
+/* Styling for hover effect */
+
+.contact-info:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+/* Apply the animation to the form */
+
+form {
+    animation: slideInFromLeft 0.5s ease-in-out;
 }
 
 @media (max-width: 700px) {

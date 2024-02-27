@@ -12,10 +12,11 @@ const userController = require('../controllers/userController')
 user_route.get('/', userController.home);
 // user_route.get('/admission', userController.admission);
 user_route.get('/admin', userController.admin)
+user_route.get('/learning', userController.learning)
 user_route.get('/course', userController.course)
 user_route.get('/fees', userController.fees);
 // user_route.get('/api/login', userController.login2);
-user_route.get('/contact', userController.contact);
+// user_route.get('/contact', userController.contact);
 
 
 

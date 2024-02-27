@@ -2,25 +2,24 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - RCERT</title>
-    <link rel="shortcut icon" href="image/favicon.ico" type="image/svg+xml">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <link rel="stylesheet" href="../css/contact_style.css">
+    <link rel="stylesheet" href="../css/contact_style.css" />
     <!-- <link rel="stylesheet" href="../css/login.css"> -->
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin.css" />
 </head>
 
 <body>
     <section class="header">
         <nav>
-            <a href="/"><img src="../image/logo.png" id="logo-img"></a>
+            <a href="/"><img src="../image/logo.png" id="logo-img" /></a>
 
             <div class="nav-links" id="navLinks">
-
                 <span class="icon" onclick="hidemenu()">&#10005;</span>
                 <ul>
                     <li><a href="/ ">Home</a></li>
@@ -28,31 +27,29 @@
                     <% if(isAdmin) {%>
                         <li><a href="/admin ">Admin Panel</a></li>
                         <% } %>
-
-
-                            <li><a href="/api/admission ">Admission</a></li>
-                            <li><a href="/course ">Course</a></li>
-                            <li><a href="/fees ">Fees</a></li>
-                            <li><a href="/contact ">Contact</a></li>
-                            <li><a href="/api/sign_up ">Sign Up</a></li>
                             <% if(isLogged) {%>
-                                <li><a href="/api/logout ">Logout</a></li>
-                                <% }else {%>
-                                    <li><a href="/api/login ">Login</a></li>
-                                    <% }%>
+                                <li><a href="/learning ">Learning Portal</a></li>
+                                <% } %>
 
-
-
+                                    <li><a href="/api/admission ">Admission</a></li>
+                                    <li><a href="/course ">Course</a></li>
+                                    <!-- <li><a href="/fees ">Fees</a></li> -->
+                                    <li><a href="/api/contact ">Contact</a></li>
+                                    <li><a href="/api/sign_up ">Sign Up</a></li>
+                                    <% if(isLogged) {%>
+                                        <li><a href="/api/logout ">Logout</a></li>
+                                        <% }else {%>
+                                            <li><a href="/api/login ">Login</a></li>
+                                            <% }%>
                 </ul>
             </div>
             <span class="icon" onclick="showmenu()">&#9776;</span>
         </nav>
         <div class="wrapper formContainer">
             <div class="r_form_wrap">
-
                 <div class="impMsg">
                     <% if(typeof msg !=='undefined' ){ %>
-                        <p style="color: red;">
+                        <p style="color: red">
                             <%= msg %>
                         </p>
                         <% } %>
@@ -63,7 +60,6 @@
             </div>
 
             <div class="table-white-background">
-
                 <h3>Admission Enquires</h3>
 
                 <table class="table-white-background" e>
@@ -109,7 +105,6 @@
             </div>
 
             <div class="table-white-background">
-
                 <table class="table-white-background">
                     <h3>Signup Users</h3>
                     <thead>
@@ -151,19 +146,54 @@
                             <% }); %>
                     </tbody>
                 </table>
-
-
-
             </div>
+
+            <div class="table-white-background">
+                <table class="table-white-background">
+                    <h1>Contact Enquires</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Message</th>
+                                <th>Created At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% contactInfo.forEach(entry => { %>
+                                <tr>
+                                    <td>
+                                        <%= entry.id %>
+                                    </td>
+                                    <td>
+                                        <%= entry.name %>
+                                    </td>
+                                    <td>
+                                        <%= entry.email %>
+                                    </td>
+                                    <td>
+                                        <%= entry.phone %>
+                                    </td>
+                                    <td>
+                                        <%= entry.message %>
+                                    </td>
+                                    <td>
+                                        <%= entry.created_at %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                </table>
+            </div>
+
         </div>
     </section>
 
-
     <div class="none_div"></div>
-
-
-
-
 </body>
 <script src="../javascript/login.js"></script>
 <!-- <script src=" https://smtpjs.com/v3/smtp.js"></script> -->

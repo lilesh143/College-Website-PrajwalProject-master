@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Fees Enquiry - RCERT</title>
-    <link rel="shortcut icon" href="image/favicon.ico" type="image/svg+xml">
-    <link rel="stylesheet" href="css/fees_style.css">
+    <link rel="shortcut icon" href="../../image/favicon.ico" type="image/svg+xml">
+    <link rel="stylesheet" href="../../css/fees_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 
@@ -16,17 +16,33 @@
 <body>
     <section class="header">
         <nav>
-            <a href="/"><img src="image/logo.png" id="logo-img"></a>
+            <a href="/"><img src="../../image/logo.png" id="logo-img"></a>
 
             <div class="nav-links" id="navLinks">
 
                 <span class="icon" onclick="hidemenu()">&#10005;</span>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/api/admission">Admission</a></li>
-                    <!-- <li><a href="#course_call">Course</a></li> -->
-                    <li><a href="/fees">Fees</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/ ">Home</a></li>
+
+                    <% if(isAdmin) {%>
+                        <li><a href="/admin ">Admin Panel</a></li>
+                        <% } %>
+
+                            <% if(isLogged) {%>
+                                <li><a href="/learning ">Learning Portal</a></li>
+                                <% } %>
+
+                                    <li><a href="/api/admission ">Admission</a></li>
+                                    <li><a href="/course ">Course</a></li>
+                                    <li><a href="/fees ">Fees</a></li>
+                                    <li><a href="/api/contact ">Contact</a></li>
+                                    <li><a href="/api/sign_up ">Sign Up</a></li>
+                                    <% if(isLogged) {%>
+                                        <li><a href="/api/logout ">Logout</a></li>
+                                        <% }else {%>
+                                            <li><a href="/api/login ">Login</a></li>
+                                            <% }%>
+
                 </ul>
             </div>
             <span class="icon" onclick="showmenu()">&#9776;</span>

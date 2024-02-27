@@ -29,10 +29,14 @@
                         <li><a href="/admin ">Admin Panel</a></li>
                         <% } %> 
 
+                    <% if(isLogged) {%>
+                        <li><a href="/learning ">Learning Portal</a></li>
+                        <% } %>
+
                     <li><a href="/api/admission ">Admission</a></li>
                     <li><a href="/course ">Course</a></li>
-                    <li><a href="/fees ">Fees</a></li>
-                    <li><a href="/contact ">Contact</a></li>
+                    <!-- <li><a href="/fees ">Fees</a></li> -->
+                    <li><a href="/api/contact ">Contact</a></li>
                     <li><a href="/api/sign_up ">Sign Up</a></li>
                     <% if(isLogged) {%>
                         <li><a href="/api/logout ">Logout</a></li>
@@ -56,7 +60,7 @@
             <h1>Rajiv Gandhi College of Engineering, Research and Technology, Chandrapur</h1>
             <p>The Dr. BabaSaheb Ambedkar Technical University provide one of the earliest form of technical studies,<br>which has been vital in setting up the standard of brilliance.</p>
 
-            <a href="/admission " class="hero-btn ">Admission Open</a>
+            <a href="/api/admission " class="hero-btn ">Admission Open</a>
         </div>
     </section>
 
@@ -162,6 +166,17 @@
 
     <!--Javascript is Start-->
     <script src="../javascript/main_script.js " type="text/js "></script>
+    <script>
+        var navLinks = document.getElementById("navLinks ");
+    
+        function showmenu() {
+            navLinks.style.right = "0 ";
+        }
+    
+        function hidemenu() {
+            navLinks.style.right = "-200px ";
+        }
+    </script>
 </body>
 
 

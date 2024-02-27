@@ -36,11 +36,14 @@ const auth = require('../middleware/auth')
 router.get('/admission', userController.admission);
 router.get('/sign_up', userController.signUp);
 router.get('/login', auth.isLogout, userController.loginPage);
+router.get('/contact', userController.contact);
 
 
-router.post('/sign_up', upload.single('image'), signUpValidator, userController.register);
-router.post('/login', loginValidator, userController.login);
 router.post('/admission', userController.admissionData)
+router.post('/login', loginValidator, userController.login);
+router.post('/sign_up', upload.single('image'), signUpValidator, userController.register);
+router.post('/contact', userController.contactData);
+
 
 router.get('/get-user', auth.isAuthorize, userController.getUser);
 router.post('/forget-password', forgetValidator, userController.forgetPassword)

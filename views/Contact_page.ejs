@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - RCERT</title>
-    <link rel="shortcut icon" href="image/favicon.ico" type="image/svg+xml">
+    <link rel="shortcut icon" href="../../image/favicon.ico" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <link rel="stylesheet" href="css/contact_style.css">
+    <link rel="stylesheet" href="../../css/contact_style.css">
 </head>
 
 <body>
     <section class="header">
         <nav>
-            <a href="/"><img src="image/logo.png" id="logo-img"></a>
+            <a href="/"><img src="../../image/logo.png" id="logo-img"></a>
 
             <div class="nav-links" id="navLinks">
 
@@ -27,16 +27,20 @@
                         <li><a href="/admin ">Admin Panel</a></li>
                         <% } %>
 
-                            <li><a href="/api/admission ">Admission</a></li>
-                            <li><a href="/course ">Course</a></li>
-                            <li><a href="/fees ">Fees</a></li>
-                            <li><a href="/contact ">Contact</a></li>
-                            <li><a href="/api/sign_up ">Sign Up</a></li>
                             <% if(isLogged) {%>
-                                <li><a href="/api/logout ">Logout</a></li>
-                                <% }else {%>
-                                    <li><a href="/api/login ">Login</a></li>
-                                    <% }%>
+                                <li><a href="/learning ">Learning Portal</a></li>
+                                <% } %>
+
+                                    <li><a href="/api/admission ">Admission</a></li>
+                                    <li><a href="/course ">Course</a></li>
+                                    <!-- <li><a href="/fees ">Fees</a></li> -->
+                                    <li><a href="/api/contact ">Contact</a></li>
+                                    <li><a href="/api/sign_up ">Sign Up</a></li>
+                                    <% if(isLogged) {%>
+                                        <li><a href="/api/logout ">Logout</a></li>
+                                        <% }else {%>
+                                            <li><a href="/api/login ">Login</a></li>
+                                            <% }%>
 
                 </ul>
             </div>
@@ -44,44 +48,73 @@
         </nav>
         <div class="wrapper">
             <div class="r_form_wrap">
+                <div class="impMsg">
+
+                    <% if(typeof msg !== 'undefined'){ %>
+                        <p style="color: red;">
+                            <%= msg %>
+                        </p>
+                        <% } %>
+
+                </div>
 
                 <div class="title">
                     <p>Contact form</p>
                 </div>
 
-                <!-- Admission from -->
-                <div class="r_form">
-                    <form method="post" onsubmit="sendmail(); reset(); return false;">
-                        <div class="input_wrap">
-                            <label for="yourname">Your Name</label>
-                            <div class="input_item">
-                                <i class="fa fa-user" id="icon"></i>
-                                <input type="text" name="your name" class="input" id="yourname" placeholder="Enter the name" required>
+                <div class="bigContainer">
+                    <div class="contact-info">
+                        <h2>Contact Information</h2>
+                        <p><strong>Address:</strong> Ballarshah Rd, Babupeth, Chandrapur, Maharashtra 442403s</p>
+                        <p><strong>Phone:</strong> 07172 225 168</p>
+                        <p><strong>Email:</strong> principal@rcert.ac.in</p>
+                        <!-- Add any other contact details as needed -->
+                        <p>More than 40 years ago, it was the vision of Shri Shantaramji Potdukhe that transformed the educational profile of Chandrapur when he laid the foundation of technical education by starting Rajiv Gandhi College of Engineering, Research
+                            and Technology (formerly Chandrapur Engineering College ) in 1983. It was a humble beginning with 5 branches and 180 seats. It now has 450 intakes in 7 branches and PG courses in one discipline. Today under the dynamic leadership
+                            of Principal Dr. Pravin Potdukhe, the college has proved its academic merit and has successfully cultivated a sense of social responsibility.</p>
+                    </div>
+                    <div class="r_form contact-form">
+                        <form method="post" class="">
+                            <div class="input_wrap">
+                                <label for="yourname">Your Name</label>
+                                <div class="input_item">
+                                    <i class="fa fa-user" id="icon"></i>
+                                    <input type="text" name="yourname" class="input" id="yourname" placeholder="Enter the name" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="input_wrap">
-                            <label for="emailaddress">Email Address</label>
-                            <div class="input_item">
-                                <i class="fa fa-envelope" id="icon"></i>
-                                <input type="email" name="email address" class="input" id="emailaddress" placeholder="Enter the Email ID" required>
+                            <div class="input_wrap">
+                                <label for="emailaddress">Email Address</label>
+                                <div class="input_item">
+                                    <i class="fa fa-envelope" id="icon"></i>
+                                    <input type="email" name="emailaddress" class="input" id="emailaddress" placeholder="Enter the Email ID" required>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="input_wrap">
-                            <label for="phone">Phone</label>
-                            <div class="input_item">
-                                <i class="fa fa-commenting" id="icon"></i>
-                                <textarea name="phone" class="mess" id="phone" placeholder="Write your message..." size="500"></textarea>
+                            <div class="input_wrap">
+                                <label for="phonenumber">Phone Number</label>
+                                <div class="input_item">
+                                    <i class="fa fa-phone" id="icon"></i>
+                                    <input type="tel" name="phonenumber" class="input" id="phonenumber" placeholder="Enter your phone number" required>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="input_wrap">
+                                <label for="Message">Message</label>
+                                <div class="input_item">
+                                    <i class="fa fa-commenting" id="icon"></i>
+                                    <textarea name="message" class="mess" id="message" placeholder="Write your message..." size="200"></textarea>
+                                </div>
+                            </div>
 
 
-                        <input type="submit" class="button" value="Send Message">
-                        <div></div>
-                        <input type="reset" class="clear_ad" value="Clear">
+                            <input type="submit" class="button" value="Send Message">
+                            <div></div>
+                            <input type="reset" class="clear_ad" value="Clear">
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
+
+
             </div>
         </div>
     </section>

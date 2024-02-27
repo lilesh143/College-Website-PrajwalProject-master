@@ -415,7 +415,17 @@ const admissionData = async(req, res) => {
 };
 
 const fees = (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/fees_page.html'))
+    try {
+        res.render('fees_page', {
+            isLogged: req.session.isLogged,
+            userName: req.session.userName,
+            isAdmin: req.session.isAdmin
+        });
+
+    } catch (error) {
+        console.log(error.message);
+
+    }
 }
 
 const signUp = (req, res) => {
@@ -432,10 +442,35 @@ const loginPage = (req, res) => {
 
 const contact = (req, res) => {
     res.render('Contact_page', {
+        msg: req.flash('msg'),
         isLogged: req.session.isLogged,
         userName: req.session.userName,
         isAdmin: req.session.isAdmin
     });
+}
+
+const contactData = async(req, res) => {
+    const { yourname, emailaddress, phonenumber, message } = req.body;
+
+    try {
+        const query = `
+      INSERT INTO contact (name, email, phone, message)
+      VALUES ($1, $2, $3, $4)
+      RETURNING id
+    `;
+        const values = [yourname, emailaddress, phonenumber, message];
+        const result = await db.query(query, values);
+
+        // Respond with success message or handle appropriately
+        // res.status(200).send('Form data submitted successfully!');
+
+        req.flash('msg', 'Thank you for filling the form, we will contact you shortly');
+        res.redirect('/api/admission');
+
+    } catch (err) {
+        console.error('Error executing query', err);
+        res.status(500).send('An error occurred while submitting the form.');
+    }
 }
 
 const loadDashboard = async(req, res) => {
@@ -493,10 +528,14 @@ const admin = async(req, res) => {
         // Query the PostgreSQL database to fetch all sign up users data
         const { rows: signUpUsers } = await db.query('SELECT * FROM users2');
 
+        // Query the PostgreSQL database to fetch all sign up users data
+        const { rows: contactInfo } = await db.query('SELECT * FROM contact');
+
         // Render the EJS template and pass the data as variables
         res.render('admin', {
             admissionData: admissionData,
             signUpUsers: signUpUsers,
+            contactInfo: contactInfo,
             isLogged: req.session.isLogged,
             userName: req.session.userName,
             isAdmin: req.session.isAdmin
@@ -515,6 +554,19 @@ const admin = async(req, res) => {
     }
 }
 
+const learning = async(req, res) => {
+    try {
+        res.render('learning', {
+            isLogged: req.session.isLogged,
+            userName: req.session.userName,
+            isAdmin: req.session.isAdmin
+        });
+
+    } catch (error) {
+        console.log(error.message);
+
+    }
+}
 
 module.exports = {
     register,
@@ -535,5 +587,7 @@ module.exports = {
     loadDashboard,
     logout,
     course,
-    admin
+    admin,
+    learning,
+    contactData
 };

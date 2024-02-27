@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Portal - RCERT</title>
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="css/contact_style.css">
+    <link rel="stylesheet" href="css/learning.css" type="text/css">
+</head>
+
+<body>
+    <section class="header ">
+        <nav>
+            <a href="/ "><img src="image/logo.png " id="logo-img "></a>
+
+            <div class="nav-links " id="navLinks ">
+
+                <span class="icon " onclick="hidemenu() ">&#10005;</span>
+                <ul>
+                    <li><a href="/ ">Home</a></li>
+
+                    <% if(isAdmin) {%>
+                        <li><a href="/admin ">Admin Panel</a></li>
+                        <% } %>
+
+                            <li><a href="/api/admission ">Admission</a></li>
+                            <li><a href="/course ">Course</a></li>
+                            <!-- <li><a href="/fees ">Fees</a></li> -->
+                            <li><a href="/api/contact ">Contact</a></li>
+                            <li><a href="/api/sign_up ">Sign Up</a></li>
+                            <% if(isLogged) {%>
+                                <li><a href="/api/logout ">Logout</a></li>
+                                <% }else {%>
+                                    <li><a href="/api/login ">Login</a></li>
+                                    <% }%>
+
+                </ul>
+            </div>
+            <span class="icon " onclick="showmenu() ">&#9776;</span>
+        </nav>
+        <h1>Best Videos</h1>
+
+        <!-- Web Development Section -->
+        <section class="video-section ">
+            <h2>Best Videos for Web Development</h2>
+            <div class="card_section">
+
+                <div class="video-card ">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=iVN1jDB2WK5bdvlX&amp;list=PLu0W_9lII9agq5TrH9XLIKQvv0iaF2X3w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <p>Web Development playlist by Code With Harry. </p>
+                </div>
+                <div class="video-card ">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=E1hyzVYqJTw5Rysj&amp;list=PLfqMhTWNBTe3H6c9OGXb5_6wcc1Mca52n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <p>Web Development playlist by Apna Collage. </p>
+                </div>
+                <div class="video-card ">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=0jxxw8ndEH7lPHwM&amp;list=PLDzeHZWIZsTo0wSBcg4-NMIbC0L8evLrD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <p>Web Development playlist by Love Babbar. </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Structures and Algorithms Section -->
+        <section class="video-section ">
+            <h2>Best Videos for Data Structures and Algorithms</h2>
+
+            <div class="card_section">
+                <div class="video-card ">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=cq-ppncXITUZbJXi&amp;list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyYqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <p>Data Structure and Algorithm by Kunal Kushwaha.</p>
+                </div>
+                <div class="video-card ">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=vsKvnYs7ssmymXzs&amp;list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <p>Full Data Sructure & Algorithm Playlist by Striver</p>
+                </div>
+                <div class="video-card ">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=z7k1ttAaGkzPL0pr&amp;list=PLAXnLdrLnQpRcveZTtD644gM9uzYqJCwr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <p>In depth understannding of DSA by Abdul Bari Sir.</p>
+                    <!-- Add two more video cards for DSA -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Android Development Section -->
+        <section class="video-section ">
+            <h2>Best Videos for Android Development</h2>
+            <div class="card_section">
+
+                <div class="video-card ">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=s5b6dWL3F5QzDQa0&amp;list=PLu0W_9lII9aiL0kysYlfSOUgY5rNlOhUd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <p>Android development playlist by Code With Harry.</p>
+                </div>
+                <div class="video-card ">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=Sa2y0F4qvfXLFGFm&amp;list=PLUhfM8afLE_NQbVaoIEhceR9npbY57Pdg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <p>Android Development by Neat Roots.</p>
+                </div>
+                <div class="video-card ">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/uEhmQd0Z1CA?si=gJX5U-l2kMrPqeYG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                    <p>Full Android development in one Video.</p>
+                    <!-- Add two more video cards for Android development -->
+                </div>
+
+        </section>
+
+</body>
+
+</html>
