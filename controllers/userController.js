@@ -465,7 +465,7 @@ const contactData = async(req, res) => {
         // res.status(200).send('Form data submitted successfully!');
 
         req.flash('msg', 'Thank you for filling the form, we will contact you shortly');
-        res.redirect('/api/admission');
+        res.redirect('/api/contact');
 
     } catch (err) {
         console.error('Error executing query', err);
