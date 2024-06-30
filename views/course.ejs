@@ -9,6 +9,72 @@
     <link rel="shortcut icon " href="../../image/favicon.ico " type="image/svg+xml ">
     <!-- <link rel="stylesheet" href="../public/css/contact_style.css" type="text/css">  -->
 
+    <!-- ... -->
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+        
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+        
+        .column {
+            float: left;
+            width: 50%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+        }
+        
+        @media screen and (max-width: 650px) {
+            .column {
+                width: 100%;
+                display: block;
+            }
+        }
+        
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        .container {
+            padding: 0 16px;
+        }
+        
+        .container::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        .title {
+            color: grey;
+        }
+        
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .button a {
+            color: aliceblue;
+        }
+        
+        .button:hover {
+            background-color: #555;
+        }
+    </style>
+    <!-- ... -->
 </head>
 
 <nav>
@@ -45,6 +111,11 @@
     <span class="icon " onclick="showmenu() ">&#9776;</span>
 </nav>
 
+<!-- ..... -->
+
+
+<!-- ..... -->
+
 <body>
     <div class="container ">
         <h1>Welcome to RCERT College</h1>
@@ -70,6 +141,64 @@
                 PhD students engage in rigorous research endeavors, pushing the boundaries of knowledge and addressing complex engineering challenges.
             </p>
         </div>
+
+        <!-- ... -->
+
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img src="../image/p1.jpg" alt="Jane" style="width:100%">
+                    <div class="container">
+                        <h2>Anil Chitade</h2>
+                        <p class="title">Principal</p>
+                        <p></p>
+                        <p></p>
+                        <p><button class="button"><a href="/api/contact"> Contact</a></button></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../image/p2.jpg" alt="Jane" style="width: 75%; margin: 0 50px;">
+                    <div class="container">
+                        <h2>Dr.R.K.Dhatrak</h2>
+                        <p class="title">Professor Head</p>
+                        <p></p>
+                        <p></p>
+                        <p><button class="button"><a href="/api/contact"> Contact</a></button></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="column">
+                <div class="card">
+                    <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
+                    <div class="container">
+                        <h2>Mike Ross</h2>
+                        <p class="title">Art Director</p>
+                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                        <p>example@example.com</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="column">
+                <div class="card">
+                    <img src="/w3images/team3.jpg" alt="John" style="width:100%">
+                    <div class="container">
+                        <h2>John Doe</h2>
+                        <p class="title">Designer</p>
+                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                        <p>example@example.com</p>
+                        <p><button class="button">Contact</button></p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- ... -->
         <div class="section ">
             <h2>Facilities</h2>
             <img src="../../image/facility_image.jpg " alt="Facilities Image ">

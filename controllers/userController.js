@@ -168,7 +168,7 @@ const login = (req, res) => {
                                 console.log({
                                     msg: 'User Logged in successfully',
                                     jtoken: jToken,
-                                    user: [result]['rows'],
+                                    user: result.rows[0],
                                 });
 
                                 console.log(result.rows[0]['id']);
@@ -414,9 +414,9 @@ const admissionData = async(req, res) => {
     }
 };
 
-const fees = (req, res) => {
+const events = (req, res) => {
     try {
-        res.render('fees_page', {
+        res.render('events', {
             isLogged: req.session.isLogged,
             userName: req.session.userName,
             isAdmin: req.session.isAdmin
@@ -427,6 +427,21 @@ const fees = (req, res) => {
 
     }
 }
+
+const gallery = (req, res) => {
+    try {
+        res.render('gallery', {
+            isLogged: req.session.isLogged,
+            userName: req.session.userName,
+            isAdmin: req.session.isAdmin
+        });
+
+    } catch (error) {
+        console.log(error.message);
+
+    }
+}
+
 
 const signUp = (req, res) => {
     // res.sendFile(path.join(__dirname, '../views/Sign_up.html'))
@@ -568,6 +583,82 @@ const learning = async(req, res) => {
     }
 }
 
+const profile = async(req, res) => {
+    try {
+        res.render('profile', {
+            isLogged: req.session.isLogged,
+            userName: req.session.userName,
+            isAdmin: req.session.isAdmin,
+            user_id: req.session.user_id
+        });
+
+    } catch (error) {
+        console.log(error.message);
+
+    }
+}
+
+const addDetails = async(req, res) => {
+    try {
+        res.render('addDetails', {
+            isLogged: req.session.isLogged,
+            userName: req.session.userName,
+            isAdmin: req.session.isAdmin,
+            user_id: req.session.user_id
+
+        });
+
+    } catch (error) {
+        console.log(error.message);
+
+    }
+}
+
+const addInfo = async(req, res) => {
+    console.log('from addInfo');
+
+    const {
+        hscPercentage,
+        sscPercentage,
+        programmingLanguage,
+        firstSemesterSGPA,
+        secondSemesterSGPA,
+        thirdSemesterSGPA,
+        fourthSemesterSGPA,
+        fifthSemesterSGPA,
+        sixthSemesterSGPA,
+        seventhSemesterSGPA
+    } = req.body;
+
+    try {
+        // const query = `
+        //   INSERT INTO student_details (ssc_percentage, hsc_percentage, programming_language, first_sem_sgpa, second_sem_sgpa, third_sem_sgpa, fourth_sem_sgpa, fifth_sem_sgpa, sixth_sem_sgpa, seventh_sem_sgpa)
+        //   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+        // `;
+        // const values = [
+        //     sscPercentage,
+        //     hscPercentage,
+        //     programmingLanguage,
+        //     firstSemesterSGPA,
+        //     secondSemesterSGPA,
+        //     thirdSemesterSGPA,
+        //     fourthSemesterSGPA,
+        //     fifthSemesterSGPA,
+        //     sixthSemesterSGPA,
+        //     seventhSemesterSGPA
+        // ];
+        // await db.query(query, values);
+
+        // res.send('Form data submitted successfully!');
+
+        console.log('This is from addDetails');
+
+    } catch (err) {
+        console.error('Error executing query', err);
+        res.status(500).send('An error occurred while submitting the form data.');
+    }
+}
+
 module.exports = {
     register,
     verifyMail,
@@ -580,7 +671,8 @@ module.exports = {
     home,
     admission,
     admissionData,
-    fees,
+    events,
+    gallery,
     signUp,
     loginPage,
     contact,
@@ -589,5 +681,8 @@ module.exports = {
     course,
     admin,
     learning,
-    contactData
+    contactData,
+    profile,
+    addDetails,
+    addInfo
 };
