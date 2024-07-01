@@ -316,11 +316,6 @@ body {
     flex-wrap: wrap;
 }
 
-.contact-info {
-    height: 70vh;
-    width: 40vw;
-}
-
 .contact-form {
     width: 50vw;
     /* height: 80vh; */
@@ -437,5 +432,8 @@ form {
     }
     .c_from {
         margin-top: 15px;
+    }
+    .contact-form {
+        width: 90vw;
     }
 }
